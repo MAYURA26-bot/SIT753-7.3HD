@@ -56,20 +56,19 @@ pipeline {
       }
     }
 
-    stage('Check Deployment') {
+    stage('Test Application') {
       steps {
         sh '''
           kubectl get pods
           kubectl get svc
-        '''
-      }
-    }
-    stage('Port Forward and Test') {
-      steps {
-        sh '''
-          kubectl port-forward deployment/calculator-crud-deployment 3005:3005 &
-          sleep 10
-          curl http://localhost:3005
+
+          echo "Running post-deployment test..."
+          POD_STATUS=$(kubectl get pod -l app=calculator-crud -o jsonpath="{.items[0].status.phase}")
+          echo "Pod status: $POD_STATUS"
+          if [ "$POD_STATUS" != "Running" ]; then
+            echo "Test failed: Pod is not running"
+            exit 1
+          fi
         '''
       }
     }
