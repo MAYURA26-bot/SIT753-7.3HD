@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     DOCKER_USER = 'mayura1994'
-    IMAGE_NAME = 'calculator-microservice'
+    IMAGE_NAME = 'calculator-crud-microservice'
   }
 
   stages {

@@ -3,14 +3,14 @@ version: '3.8'
 services:
   calculator:
     build: .
-    container_name: calculator-microservice
+    container_name: calculator-crud-microservice
     ports:
-      - "3000:3000"
+      - "3030:3030"
     volumes:
       - .:/app
       - ./logs:/app/logs
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      test: ["CMD", "curl", "-f", "http://localhost:3030"]
       interval: 30s
       timeout: 10s
       retries: 3

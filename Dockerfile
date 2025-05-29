@@ -18,7 +18,7 @@ RUN mkdir -p logs
 COPY app.js .
 
 # Expose the port your app runs on
-EXPOSE 3000
+EXPOSE 3030
 
 # Command to start the app
 CMD ["node", "app.js"]

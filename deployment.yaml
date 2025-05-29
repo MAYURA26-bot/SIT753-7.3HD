@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: calculator-deployment
+  name: calculator-crud-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: calculator
+      app: calculator-crud
   template:
     metadata:
       labels:
-        app: calculator
+        app: calculator-crud
     spec:
       containers:
-        - name: calculator
-          image: mayura1994/calculator-microservice:latest
+        - name: calculator-crud
+          image: mayura1994/calculator-crud-microservice:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 3030
           env:
             - name: MONGO_USERNAME
               valueFrom:
