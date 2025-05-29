@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: calculator
-          image: mayura1994/calculator-microservice-9.1p
+          image: mayura1994/calculator-microservice:latest
           ports:
             - containerPort: 3000
           env:
