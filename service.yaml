@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: calculator
+    app: calculator-crud
   ports:
     - protocol: TCP
       port: 3030          # Port for the service
