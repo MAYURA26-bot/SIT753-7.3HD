@@ -74,11 +74,16 @@ pipeline {
     }
 
     stage('Security Scan') {
+      agent {
+        docker {
+          image 'node:16' // or 'node:18'
+          args '-v $HOME:/home/node'
+        }
+      }
       steps {
         sh '''
-          echo "Running security audit on dependencies..."
           npm install
-          npm audit --audit-level=moderate > audit-report.txt || true
+          npm audit --audit-level=low > audit-report.txt || true
           cat audit-report.txt
         '''
       }
