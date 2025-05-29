@@ -50,8 +50,8 @@ pipeline {
           kubectl apply -f mongo-pvc.yaml
           kubectl apply -f mongo-deployment.yaml
           kubectl apply -f mongo-service.yaml
-          kubectl apply -f calculator-deployment.yaml
-          kubectl apply -f calculator-service.yaml
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
         '''
       }
     }
