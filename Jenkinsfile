@@ -73,5 +73,15 @@ pipeline {
       }
     }
 
+    stage('Security Scan') {
+      steps {
+        sh '''
+          echo "Running security audit on dependencies..."
+          npm install
+          npm audit --audit-level=moderate > audit-report.txt || true
+          cat audit-report.txt
+        '''
+      }
+    }
   }
 }
