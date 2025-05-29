@@ -64,5 +64,15 @@ pipeline {
         '''
       }
     }
+    stage('Port Forward and Test') {
+      steps {
+        sh '''
+          kubectl port-forward deployment/calculator-crud-deployment 3005:3005 &
+          sleep 10
+          curl http://localhost:3005
+        '''
+      }
+    }
+
   }
 }
